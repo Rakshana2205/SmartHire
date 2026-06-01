@@ -27,7 +27,7 @@ function JobDetailsPage() {
       setApplied(isJobApplied(job.id));
       window.scrollTo(0, 0);
     }
-  }, [id]);
+  }, [isJobApplied, isJobSaved, job]);
 
   if (!job) {
     return (
@@ -51,19 +51,19 @@ function JobDetailsPage() {
     );
   }
 
-function handleSave() {
-  setAnimateSave(true);
-  setTimeout(() => setAnimateSave(false), 600);
-  if (saved) {
-    unsaveJob(job.id);
-    setSaved(false);
-    addToast('Job removed from saved list', 'info');
-  } else {
-    saveJob(job);
-    setSaved(true);
-    addToast('Job saved successfully! 🔖', 'success');
+  function handleSave() {
+    setAnimateSave(true);
+    setTimeout(() => setAnimateSave(false), 600);
+    if (saved) {
+      unsaveJob(job.id);
+      setSaved(false);
+      addToast("Job removed from saved list", "info");
+    } else {
+      saveJob(job);
+      setSaved(true);
+      addToast("Job saved successfully! 🔖", "success");
+    }
   }
-}
 
   function handleApply() {
     if (!user) {
@@ -73,12 +73,12 @@ function handleSave() {
     setShowModal(true);
   }
 
- function confirmApply() {
-  applyJob(job);
-  setApplied(true);
-  setShowModal(false);
-  addToast('Application submitted successfully! 🚀', 'success');
-}
+  function confirmApply() {
+    applyJob(job);
+    setApplied(true);
+    setShowModal(false);
+    addToast("Application submitted successfully! 🚀", "success");
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -110,7 +110,6 @@ function FilterChip({ label, active, onClick }) {
 
 function JobListingsPage() {
   const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -135,7 +134,7 @@ function JobListingsPage() {
     const categoryQuery = searchParams.get("category") || "All";
     if (searchQuery) setSearch(searchQuery);
     if (categoryQuery !== "All") setCategory(categoryQuery);
-  }, []);
+  }, [searchParams, setCategory, setSearch]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 800);
