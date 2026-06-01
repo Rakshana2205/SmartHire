@@ -4,7 +4,7 @@ A professional job portal built with React! Find, save and apply to jobs from to
 
 ## 🌐 Live Demo
 
-[Visit SmartHire](#)
+[Visit SmartHire](smart-hire-zeta.vercel.app)
 
 ## ✨ Features
 
