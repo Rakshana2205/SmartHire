@@ -33,32 +33,34 @@ function JobCard({ job }) {
 
   return (
     <div
-      className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-violet-200 hover:shadow-lg hover:shadow-violet-50 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+      className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-violet-200 dark:hover:border-violet-700 hover:shadow-lg hover:shadow-violet-50 dark:hover:shadow-none hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
       onClick={() => navigate(`/jobs/${job.id}`)}
     >
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-50 to-pink-50 border border-gray-100 flex items-center justify-center text-2xl flex-shrink-0">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-50 to-pink-50 dark:from-violet-900/30 dark:to-pink-900/30 border border-gray-100 dark:border-gray-800 flex items-center justify-center text-2xl flex-shrink-0">
             {job.companyLogo}
           </div>
           <div>
-            <h3 className="font-bold text-gray-900 group-hover:text-violet-600 transition-colors">
+            <h3 className="font-bold text-gray-900 dark:text-white group-hover:text-violet-600 transition-colors">
               {job.title}
             </h3>
-            <p className="text-gray-500 text-sm font-medium">{job.company}</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">
+              {job.company}
+            </p>
           </div>
         </div>
         <div className="flex flex-col items-end gap-2">
           {job.featured && (
-            <span className="bg-amber-50 text-amber-600 border border-amber-100 text-xs font-bold px-2.5 py-1 rounded-full">
+            <span className="bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border border-amber-100 dark:border-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">
               ⭐ Featured
             </span>
           )}
           <span
             className={`text-xs font-semibold px-3 py-1 rounded-full border ${
               job.type === "Full Time"
-                ? "bg-green-50 text-green-600 border-green-100"
-                : "bg-blue-50 text-blue-600 border-blue-100"
+                ? "bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800"
+                : "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-800"
             }`}
           >
             {job.type}
@@ -66,7 +68,7 @@ function JobCard({ job }) {
         </div>
       </div>
 
-      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+      <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
         <span>📍 {job.location}</span>
         <span>💼 {job.experience}</span>
         <span>🕐 {job.posted}</span>
@@ -76,16 +78,18 @@ function JobCard({ job }) {
         {job.tags.map((tag) => (
           <span
             key={tag}
-            className="bg-gray-50 text-gray-600 border border-gray-100 text-xs px-2.5 py-1 rounded-full font-medium"
+            className="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-100 dark:border-gray-700 text-xs px-2.5 py-1 rounded-full font-medium"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-        <span className="text-violet-600 font-bold">{job.salary}</span>
-        <span className="text-sm font-bold text-violet-600 group-hover:gap-2 transition-all">
+      <div className="flex items-center justify-between pt-3 border-t border-gray-50 dark:border-gray-800">
+        <span className="text-violet-600 dark:text-violet-400 font-bold">
+          {job.salary}
+        </span>
+        <span className="text-sm font-bold text-violet-600 dark:text-violet-400 group-hover:gap-2 transition-all">
           View Details →
         </span>
       </div>
@@ -99,8 +103,8 @@ function FilterChip({ label, active, onClick }) {
       onClick={onClick}
       className={`px-4 py-2 rounded-full text-sm font-semibold transition-all border ${
         active
-          ? "bg-violet-600 text-white border-violet-600 shadow-md shadow-violet-200"
-          : "bg-white text-gray-600 border-gray-200 hover:border-violet-300 hover:text-violet-600"
+          ? "bg-violet-600 text-white border-violet-600 shadow-md shadow-violet-200 dark:shadow-none"
+          : "bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-violet-300 hover:text-violet-600"
       }`}
     >
       {label}
@@ -142,14 +146,14 @@ function JobListingsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors">
       {/* Page Header */}
-      <div className="bg-white border-b border-gray-100">
+      <div className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-6xl mx-auto px-6 py-10">
-          <h1 className="text-4xl font-black text-gray-900 mb-2">
+          <h1 className="text-4xl font-black text-gray-900 dark:text-white mb-2">
             Find Your Perfect Job 🔍
           </h1>
-          <p className="text-gray-500 font-medium">
+          <p className="text-gray-500 dark:text-gray-400 font-medium">
             {filteredJobs.length} jobs found
             {search && ` for "${search}"`}
             {category !== "All" && ` in ${category}`}
@@ -166,15 +170,15 @@ function JobListingsPage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search jobs, skills or companies..."
-                className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-gray-100 focus:border-violet-300 outline-none font-medium text-gray-800 bg-gray-50 focus:bg-white transition-all"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-gray-100 dark:border-gray-800 focus:border-violet-300 outline-none font-medium text-gray-800 dark:text-gray-100 bg-gray-50 dark:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 transition-all"
               />
             </div>
             <button
               onClick={() => setShowFilters(!showFilters)}
               className={`flex items-center gap-2 px-5 py-3 rounded-xl border-2 font-semibold transition-all ${
                 showFilters
-                  ? "border-violet-300 bg-violet-50 text-violet-600"
-                  : "border-gray-100 bg-white text-gray-600 hover:border-violet-300"
+                  ? "border-violet-300 bg-violet-50 dark:bg-violet-900/30 text-violet-600 dark:text-violet-300"
+                  : "border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-300 hover:border-violet-300"
               }`}
             >
               🎛️ Filters
@@ -191,9 +195,11 @@ function JobListingsPage() {
       <div className="max-w-6xl mx-auto px-6 py-8">
         {/* Filters Panel */}
         {showFilters && (
-          <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-8 shadow-sm">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 mb-8 shadow-sm dark:shadow-none">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-black text-gray-900">Filter Jobs</h3>
+              <h3 className="font-black text-gray-900 dark:text-white">
+                Filter Jobs
+              </h3>
               {hasFilters && (
                 <button
                   onClick={clearFilters}
@@ -205,7 +211,7 @@ function JobListingsPage() {
             </div>
 
             <div className="mb-6">
-              <p className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">
+              <p className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
                 Category
               </p>
               <div className="flex flex-wrap gap-2">
@@ -221,7 +227,7 @@ function JobListingsPage() {
             </div>
 
             <div className="mb-6">
-              <p className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">
+              <p className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
                 Job Type
               </p>
               <div className="flex flex-wrap gap-2">
@@ -237,7 +243,7 @@ function JobListingsPage() {
             </div>
 
             <div>
-              <p className="text-sm font-bold text-gray-700 mb-3 uppercase tracking-wider">
+              <p className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wider">
                 Location
               </p>
               <div className="flex flex-wrap gap-2">
@@ -257,11 +263,11 @@ function JobListingsPage() {
         {/* Active filters */}
         {hasFilters && (
           <div className="flex flex-wrap items-center gap-2 mb-6">
-            <span className="text-sm text-gray-500 font-medium">
+            <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
               Active filters:
             </span>
             {search && (
-              <span className="flex items-center gap-1 bg-violet-50 text-violet-700 border border-violet-100 text-sm px-3 py-1 rounded-full font-semibold">
+              <span className="flex items-center gap-1 bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 text-sm px-3 py-1 rounded-full font-semibold">
                 🔍 {search}
                 <button onClick={() => setSearch("")} className="ml-1">
                   ✕
@@ -269,7 +275,7 @@ function JobListingsPage() {
               </span>
             )}
             {category !== "All" && (
-              <span className="flex items-center gap-1 bg-violet-50 text-violet-700 border border-violet-100 text-sm px-3 py-1 rounded-full font-semibold">
+              <span className="flex items-center gap-1 bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 text-sm px-3 py-1 rounded-full font-semibold">
                 📂 {category}
                 <button onClick={() => setCategory("All")} className="ml-1">
                   ✕
@@ -277,7 +283,7 @@ function JobListingsPage() {
               </span>
             )}
             {jobType !== "All" && (
-              <span className="flex items-center gap-1 bg-violet-50 text-violet-700 border border-violet-100 text-sm px-3 py-1 rounded-full font-semibold">
+              <span className="flex items-center gap-1 bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 text-sm px-3 py-1 rounded-full font-semibold">
                 💼 {jobType}
                 <button onClick={() => setJobType("All")} className="ml-1">
                   ✕
@@ -285,7 +291,7 @@ function JobListingsPage() {
               </span>
             )}
             {location !== "All" && (
-              <span className="flex items-center gap-1 bg-violet-50 text-violet-700 border border-violet-100 text-sm px-3 py-1 rounded-full font-semibold">
+              <span className="flex items-center gap-1 bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 border border-violet-100 dark:border-violet-800 text-sm px-3 py-1 rounded-full font-semibold">
                 📍 {location}
                 <button onClick={() => setLocation("All")} className="ml-1">
                   ✕
@@ -297,9 +303,9 @@ function JobListingsPage() {
 
         {/* Sort + count */}
         <div className="flex items-center justify-between mb-6">
-          <p className="text-gray-600 font-medium">
+          <p className="text-gray-600 dark:text-gray-300 font-medium">
             Showing{" "}
-            <span className="font-bold text-gray-900">
+            <span className="font-bold text-gray-900 dark:text-white">
               {filteredJobs.length}
             </span>{" "}
             jobs
@@ -307,7 +313,7 @@ function JobListingsPage() {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="border-2 border-gray-100 rounded-xl px-4 py-2 text-sm font-semibold text-gray-700 outline-none focus:border-violet-300 bg-white cursor-pointer"
+            className="border-2 border-gray-100 dark:border-gray-800 rounded-xl px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 outline-none focus:border-violet-300 bg-white dark:bg-gray-900 cursor-pointer"
           >
             {SORT_OPTIONS.map((opt) => (
               <option key={opt.value} value={opt.value}>
@@ -331,12 +337,12 @@ function JobListingsPage() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
+          <div className="text-center py-20 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800">
             <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-black text-gray-900 mb-2">
+            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2">
               No jobs found!
             </h3>
-            <p className="text-gray-500 font-medium mb-6">
+            <p className="text-gray-500 dark:text-gray-400 font-medium mb-6">
               Try adjusting your search or filters
             </p>
             <button
