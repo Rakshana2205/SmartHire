@@ -55,7 +55,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex transition-colors">
       {/* Left Side — Decorative */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-violet-600 via-purple-600 to-pink-600 relative overflow-hidden items-center justify-center">
         <div className="absolute top-0 left-0 w-full h-full">
@@ -103,14 +103,14 @@ function LoginPage() {
             <span className="text-xl font-black gradient-text">SmartHire</span>
           </Link>
 
-          <h1 className="text-3xl font-black text-gray-900 mb-2">
+          <h1 className="text-3xl font-black text-gray-900 dark:text-white mb-2">
             Sign in to your account
           </h1>
-          <p className="text-gray-500 font-medium mb-8">
+          <p className="text-gray-500 dark:text-gray-400 font-medium mb-8">
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="text-violet-600 font-bold hover:text-violet-700"
+              className="text-violet-600 dark:text-violet-400 font-bold hover:text-violet-700"
             >
               Sign up free →
             </Link>
@@ -118,7 +118,7 @@ function LoginPage() {
 
           {/* API Error */}
           {apiError && (
-            <div className="bg-red-50 border border-red-100 text-red-600 font-semibold px-4 py-3 rounded-xl mb-6 flex items-center gap-2">
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 text-red-600 dark:text-red-400 font-semibold px-4 py-3 rounded-xl mb-6 flex items-center gap-2">
               <span>⚠️</span>
               <span>{apiError}</span>
             </div>
@@ -127,7 +127,7 @@ function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                 Email Address
               </label>
               <input
@@ -136,14 +136,14 @@ function LoginPage() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="you@example.com"
-                className={`w-full px-4 py-3.5 rounded-xl border-2 outline-none font-medium transition-all ${
+                className={`w-full px-4 py-3.5 rounded-xl border-2 outline-none font-medium transition-all text-gray-900 dark:text-gray-100 ${
                   errors.email
-                    ? "border-red-300 bg-red-50 focus:border-red-400"
-                    : "border-gray-100 bg-gray-50 focus:border-violet-300 focus:bg-white"
+                    ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20 focus:border-red-400"
+                    : "border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 focus:border-violet-300 focus:bg-white dark:focus:bg-gray-900"
                 }`}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm font-semibold mt-1.5 flex items-center gap-1">
+                <p className="text-red-500 dark:text-red-400 text-sm font-semibold mt-1.5 flex items-center gap-1">
                   <span>⚠️</span> {errors.email}
                 </p>
               )}
@@ -151,7 +151,7 @@ function LoginPage() {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
+              <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -161,10 +161,10 @@ function LoginPage() {
                   value={form.password}
                   onChange={handleChange}
                   placeholder="Min. 6 characters"
-                  className={`w-full px-4 py-3.5 rounded-xl border-2 outline-none font-medium transition-all pr-12 ${
+                  className={`w-full px-4 py-3.5 rounded-xl border-2 outline-none font-medium transition-all pr-12 text-gray-900 dark:text-gray-100 ${
                     errors.password
-                      ? "border-red-300 bg-red-50 focus:border-red-400"
-                      : "border-gray-100 bg-gray-50 focus:border-violet-300 focus:bg-white"
+                      ? "border-red-300 dark:border-red-700 bg-red-50 dark:bg-red-900/20 focus:border-red-400"
+                      : "border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 focus:border-violet-300 focus:bg-white dark:focus:bg-gray-900"
                   }`}
                 />
                 <button
@@ -176,7 +176,7 @@ function LoginPage() {
                 </button>
               </div>
               {errors.password && (
-                <p className="text-red-500 text-sm font-semibold mt-1.5 flex items-center gap-1">
+                <p className="text-red-500 dark:text-red-400 text-sm font-semibold mt-1.5 flex items-center gap-1">
                   <span>⚠️</span> {errors.password}
                 </p>
               )}
@@ -186,18 +186,18 @@ function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-violet-600 to-pink-500 text-white font-black py-4 rounded-xl hover:shadow-lg hover:shadow-violet-200 hover:scale-105 active:scale-95 transition-all disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100 mt-2"
+              className="w-full bg-gradient-to-r from-violet-600 to-pink-500 text-white font-black py-4 rounded-xl hover:shadow-lg hover:shadow-violet-200 dark:hover:shadow-none hover:scale-105 active:scale-95 transition-all disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100 mt-2"
             >
               {loading ? "⏳ Signing in..." : "Sign In →"}
             </button>
           </form>
 
           {/* Demo account */}
-          <div className="mt-6 p-4 bg-violet-50 rounded-xl border border-violet-100">
-            <p className="text-violet-700 text-sm font-bold mb-1">
+          <div className="mt-6 p-4 bg-violet-50 dark:bg-violet-900/20 rounded-xl border border-violet-100 dark:border-violet-800">
+            <p className="text-violet-700 dark:text-violet-300 text-sm font-bold mb-1">
               🧪 Don't have an account?
             </p>
-            <p className="text-violet-600 text-sm font-medium">
+            <p className="text-violet-600 dark:text-violet-400 text-sm font-medium">
               Click{" "}
               <Link to="/register" className="font-bold underline">
                 Sign Up
