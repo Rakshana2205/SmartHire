@@ -6,49 +6,49 @@ const CATEGORIES = [
   {
     label: "Technology",
     emoji: "💻",
-    bg: "bg-blue-50",
-    text: "text-blue-600",
-    border: "border-blue-100",
+    bg: "bg-blue-50 dark:bg-blue-900/20",
+    text: "text-blue-600 dark:text-blue-400",
+    border: "border-blue-100 dark:border-blue-800",
     count: 480,
   },
   {
     label: "Design",
     emoji: "🎨",
-    bg: "bg-pink-50",
-    text: "text-pink-600",
-    border: "border-pink-100",
+    bg: "bg-pink-50 dark:bg-pink-900/20",
+    text: "text-pink-600 dark:text-pink-400",
+    border: "border-pink-100 dark:border-pink-800",
     count: 230,
   },
   {
     label: "Marketing",
     emoji: "📢",
-    bg: "bg-orange-50",
-    text: "text-orange-600",
-    border: "border-orange-100",
+    bg: "bg-orange-50 dark:bg-orange-900/20",
+    text: "text-orange-600 dark:text-orange-400",
+    border: "border-orange-100 dark:border-orange-800",
     count: 180,
   },
   {
     label: "Data",
     emoji: "📊",
-    bg: "bg-violet-50",
-    text: "text-violet-600",
-    border: "border-violet-100",
+    bg: "bg-violet-50 dark:bg-violet-900/20",
+    text: "text-violet-600 dark:text-violet-400",
+    border: "border-violet-100 dark:border-violet-800",
     count: 290,
   },
   {
     label: "Management",
     emoji: "👔",
-    bg: "bg-green-50",
-    text: "text-green-600",
-    border: "border-green-100",
+    bg: "bg-green-50 dark:bg-green-900/20",
+    text: "text-green-600 dark:text-green-400",
+    border: "border-green-100 dark:border-green-800",
     count: 150,
   },
   {
     label: "Mobile",
     emoji: "📱",
-    bg: "bg-red-50",
-    text: "text-red-600",
-    border: "border-red-100",
+    bg: "bg-red-50 dark:bg-red-900/20",
+    text: "text-red-600 dark:text-red-400",
+    border: "border-red-100 dark:border-red-800",
     count: 120,
   },
 ];
@@ -58,24 +58,24 @@ function JobCard({ job }) {
 
   return (
     <div
-      className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-violet-200 hover:shadow-lg hover:shadow-violet-50 hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
+      className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 hover:border-violet-200 dark:hover:border-violet-700 hover:shadow-lg hover:shadow-violet-50 dark:hover:shadow-none hover:-translate-y-1 transition-all duration-300 cursor-pointer group"
       onClick={() => navigate(`/jobs/${job.id}`)}
     >
       <div className="flex items-start justify-between mb-4">
-        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-50 to-pink-50 border border-gray-100 flex items-center justify-center text-2xl">
+        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-50 to-pink-50 dark:from-violet-900/30 dark:to-pink-900/30 border border-gray-100 dark:border-gray-800 flex items-center justify-center text-2xl">
           {job.companyLogo}
         </div>
         <div className="flex items-center gap-2">
           {job.featured && (
-            <span className="bg-amber-50 text-amber-600 border border-amber-100 text-xs font-bold px-2.5 py-1 rounded-full">
+            <span className="bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 border border-amber-100 dark:border-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">
               ⭐ Featured
             </span>
           )}
           <span
             className={`text-xs font-semibold px-3 py-1 rounded-full border ${
               job.type === "Full Time"
-                ? "bg-green-50 text-green-600 border-green-100"
-                : "bg-blue-50 text-blue-600 border-blue-100"
+                ? "bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800"
+                : "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-800"
             }`}
           >
             {job.type}
@@ -83,12 +83,12 @@ function JobCard({ job }) {
         </div>
       </div>
 
-      <h3 className="text-base font-bold text-gray-900 mb-1 group-hover:text-violet-600 transition-colors">
+      <h3 className="text-base font-bold text-gray-900 dark:text-white mb-1 group-hover:text-violet-600 transition-colors">
         {job.title}
       </h3>
-      <p className="text-gray-500 text-sm mb-3 font-medium flex items-center gap-1">
+      <p className="text-gray-500 dark:text-gray-400 text-sm mb-3 font-medium flex items-center gap-1">
         <span>{job.company}</span>
-        <span className="text-gray-300">·</span>
+        <span className="text-gray-300 dark:text-gray-600">·</span>
         <span>📍 {job.location}</span>
       </p>
 
@@ -96,16 +96,20 @@ function JobCard({ job }) {
         {job.tags.slice(0, 3).map((tag) => (
           <span
             key={tag}
-            className="bg-gray-50 text-gray-600 border border-gray-100 text-xs px-2.5 py-1 rounded-full font-medium"
+            className="bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-100 dark:border-gray-700 text-xs px-2.5 py-1 rounded-full font-medium"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-        <span className="text-violet-600 font-bold text-sm">{job.salary}</span>
-        <span className="text-gray-400 text-xs font-medium">{job.posted}</span>
+      <div className="flex items-center justify-between pt-3 border-t border-gray-50 dark:border-gray-800">
+        <span className="text-violet-600 dark:text-violet-400 font-bold text-sm">
+          {job.salary}
+        </span>
+        <span className="text-gray-400 dark:text-gray-500 text-xs font-medium">
+          {job.posted}
+        </span>
       </div>
     </div>
   );
@@ -116,20 +120,20 @@ function HomePage() {
   const featuredJobs = jobs.filter((j) => j.featured);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors">
       <HeroSection />
 
       {/* Categories Section */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-violet-600 font-bold text-sm uppercase tracking-widest mb-3">
+            <p className="text-violet-600 dark:text-violet-400 font-bold text-sm uppercase tracking-widest mb-3">
               Explore Categories
             </p>
-            <h2 className="text-4xl font-black text-gray-900 mb-4">
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
               Browse by Category
             </h2>
-            <p className="text-gray-500 text-lg font-medium max-w-xl mx-auto">
+            <p className="text-gray-500 dark:text-gray-400 text-lg font-medium max-w-xl mx-auto">
               Find jobs in your area of expertise from top companies
             </p>
           </div>
@@ -145,7 +149,9 @@ function HomePage() {
                   {cat.emoji}
                 </div>
                 <p className={`font-bold text-sm ${cat.text}`}>{cat.label}</p>
-                <p className="text-gray-400 text-xs mt-1">{cat.count} jobs</p>
+                <p className="text-gray-400 dark:text-gray-500 text-xs mt-1">
+                  {cat.count} jobs
+                </p>
               </button>
             ))}
           </div>
@@ -153,23 +159,23 @@ function HomePage() {
       </section>
 
       {/* Featured Jobs */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-end justify-between mb-12">
             <div>
-              <p className="text-violet-600 font-bold text-sm uppercase tracking-widest mb-3">
+              <p className="text-violet-600 dark:text-violet-400 font-bold text-sm uppercase tracking-widest mb-3">
                 Top Picks
               </p>
-              <h2 className="text-4xl font-black text-gray-900 mb-2">
+              <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-2">
                 Featured Jobs ✨
               </h2>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 dark:text-gray-400 font-medium">
                 Hand-picked from top companies hiring right now
               </p>
             </div>
             <button
               onClick={() => navigate("/jobs")}
-              className="hidden md:flex items-center gap-2 text-violet-600 hover:text-violet-700 font-bold border-2 border-violet-200 hover:border-violet-300 px-6 py-3 rounded-full transition-all hover:bg-violet-50"
+              className="hidden md:flex items-center gap-2 text-violet-600 dark:text-violet-400 hover:text-violet-700 font-bold border-2 border-violet-200 dark:border-violet-800 hover:border-violet-300 px-6 py-3 rounded-full transition-all hover:bg-violet-50 dark:hover:bg-violet-900/30"
             >
               View All Jobs →
             </button>
@@ -184,7 +190,7 @@ function HomePage() {
           <div className="text-center mt-10 md:hidden">
             <button
               onClick={() => navigate("/jobs")}
-              className="text-violet-600 font-bold border-2 border-violet-200 px-8 py-3 rounded-full hover:bg-violet-50 transition-all"
+              className="text-violet-600 dark:text-violet-400 font-bold border-2 border-violet-200 dark:border-violet-800 px-8 py-3 rounded-full hover:bg-violet-50 dark:hover:bg-violet-900/30 transition-all"
             >
               View All Jobs →
             </button>
@@ -193,16 +199,16 @@ function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-violet-600 font-bold text-sm uppercase tracking-widest mb-3">
+            <p className="text-violet-600 dark:text-violet-400 font-bold text-sm uppercase tracking-widest mb-3">
               Simple Process
             </p>
-            <h2 className="text-4xl font-black text-gray-900 mb-4">
+            <h2 className="text-4xl font-black text-gray-900 dark:text-white mb-4">
               How SmartHire Works
             </h2>
-            <p className="text-gray-500 text-lg font-medium">
+            <p className="text-gray-500 dark:text-gray-400 text-lg font-medium">
               Land your dream job in 3 simple steps
             </p>
           </div>
@@ -236,20 +242,20 @@ function HomePage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="relative text-center p-8 rounded-2xl bg-white border border-gray-100 hover:shadow-lg transition-all"
+                className="relative text-center p-8 rounded-2xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:shadow-lg transition-all"
               >
                 <div
                   className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-2xl mx-auto mb-6 shadow-lg`}
                 >
                   {item.emoji}
                 </div>
-                <div className="absolute top-6 right-6 text-5xl font-black text-gray-50">
+                <div className="absolute top-6 right-6 text-5xl font-black text-gray-50 dark:text-gray-800">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-black text-gray-900 mb-3">
+                <h3 className="text-xl font-black text-gray-900 dark:text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-500 font-medium leading-relaxed">
+                <p className="text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -259,7 +265,7 @@ function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-6 bg-gray-50">
+      <section className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-4xl mx-auto">
           <div className="relative bg-gradient-to-br from-violet-600 to-pink-600 rounded-3xl p-12 text-center overflow-hidden">
             {/* Decorations */}
@@ -299,7 +305,7 @@ function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-6">
+      <footer className="bg-gray-900 dark:bg-black text-white py-12 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2">
