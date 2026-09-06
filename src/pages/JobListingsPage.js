@@ -303,7 +303,8 @@ function JobListingsPage() {
 
         {/* Sort + count */}
         <div className="flex items-center justify-between mb-6">
-          <p className="text-gray-600 dark:text-gray-300 font-medium">
+          <p className="text-gray-600 dark:text-gray-300 font-medium flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             Showing{" "}
             <span className="font-bold text-gray-900 dark:text-white">
               {filteredJobs.length}
