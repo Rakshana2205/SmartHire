@@ -333,8 +333,14 @@ function JobListingsPage() {
           </div>
         ) : filteredJobs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredJobs.map((job) => (
-              <JobCard key={job.id} job={job} />
+            {filteredJobs.map((job, index) => (
+              <div
+                key={job.id}
+                className="card-enter"
+                style={{ animationDelay: `${Math.min(index * 60, 600)}ms` }}
+              >
+                <JobCard job={job} />
+              </div>
             ))}
           </div>
         ) : (
