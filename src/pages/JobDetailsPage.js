@@ -217,7 +217,7 @@ function JobDetailsPage() {
                   disabled={applied}
                   className={`flex-1 font-bold py-3.5 rounded-xl transition-all ${
                     applied
-                      ? "bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-2 border-green-100 dark:border-green-800 cursor-not-allowed"
+                      ? "bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-2 border-green-100 dark:border-green-800 cursor-not-allowed hover:scale-105"
                       : "bg-gradient-to-r from-violet-600 to-pink-500 text-white hover:shadow-lg hover:shadow-violet-200 dark:hover:shadow-none hover:scale-105 active:scale-95"
                   }`}
                 >
@@ -313,22 +313,6 @@ function JobDetailsPage() {
                 </div>
               </div>
             </div>
-
-            {/* Quick Apply Card */}
-            {!applied && (
-              <div className="bg-gradient-to-br from-violet-600 to-pink-500 rounded-2xl p-6 text-white">
-                <h3 className="font-black text-lg mb-2">Ready to Apply? 🚀</h3>
-                <p className="text-white/80 text-sm font-medium mb-4">
-                  Join thousands who found their dream job on SmartHire!
-                </p>
-                <button
-                  onClick={handleApply}
-                  className="w-full bg-white text-violet-600 font-black py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all"
-                >
-                  Apply Now →
-                </button>
-              </div>
-            )}
 
             {/* Similar Jobs */}
             {similarJobs.length > 0 && (
