@@ -121,13 +121,13 @@ function JobDetailsPage() {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowModal(false)}
-                className="flex-1 border-2 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold py-3 rounded-xl hover:border-gray-300 transition-all"
+                className="flex-1 border-2 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold py-3 rounded-xl hover:border-gray-300 hover:scale-105 active:scale-95 transition-all"
               >
                 Cancel
               </button>
               <button
                 onClick={confirmApply}
-                className="flex-1 bg-gradient-to-r from-violet-600 to-pink-500 text-white font-bold py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all"
+                className="flex-1 bg-gradient-to-r from-violet-600 to-pink-500 text-white font-bold py-3 rounded-xl hover:shadow-lg hover:scale-105 active:scale-95 transition-all"
               >
                 Confirm Apply! ✅
               </button>
@@ -141,7 +141,7 @@ function JobDetailsPage() {
         <div className="max-w-5xl mx-auto px-6 py-4">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-violet-600 font-semibold transition-colors"
+            className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-violet-600 font-semibold hover:scale-105 active:scale-95 transition-colors"
           >
             ← Back to Jobs
           </button>
@@ -225,11 +225,11 @@ function JobDetailsPage() {
                 </button>
                 <button
                   onClick={handleSave}
-                  className={`flex items-center gap-2 px-6 py-3.5 rounded-xl border-2 font-bold transition-all ${
+                  className={`flex items-center gap-2 px-6 py-3.5 rounded-xl border-2 font-bold hover:scale-105 active:scale-95 transition-all ${
                     animateSave ? "scale-125" : "scale-100"
                   } ${
                     saved
-                      ? "bg-pink-50 dark:bg-pink-900/30 text-pink-500 dark:text-pink-400 border-pink-200 dark:border-pink-800"
+                      ? "bg-pink-50 dark:bg-pink-900/30 text-pink-500 dark:text-pink-400 border-pink-200 dark:border-pink-800 "
                       : "bg-white dark:bg-gray-900 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:border-pink-300 hover:text-pink-500"
                   }`}
                 >
