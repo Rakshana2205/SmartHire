@@ -84,8 +84,8 @@ function JobDetailsPage() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors">
       {/* Apply Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 max-w-md w-full shadow-2xl">
+        <div className="modal-backdrop fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="modal-content bg-white dark:bg-gray-900 rounded-3xl p-8 max-w-md w-full shadow-2xl">
             <div className="text-center mb-6">
               <div className="text-5xl mb-4">🚀</div>
               <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2">
