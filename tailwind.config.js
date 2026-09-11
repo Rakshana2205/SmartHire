@@ -15,6 +15,9 @@ module.exports = {
           600: "#7c3aed",
           700: "#6d28d9",
         },
+        soft: {
+          white: "#fafafa",
+        },
       },
       animation: {
         float: "float 3s ease-in-out infinite",
